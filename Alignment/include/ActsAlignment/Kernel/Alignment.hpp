@@ -19,6 +19,7 @@
 
 #include <limits>
 #include <map>
+#include <memory>
 #include <unordered_map>
 #include <vector>
 
@@ -62,7 +63,7 @@ struct AlignmentOptions {
       const std::pair<std::size_t, double>& deltaChi2CutOff = {5, 0.01},
       std::size_t maxIters = 5,
       const std::map<unsigned int, AlignmentMask>& iterState = {},
-      const std::vector<AlignableStructure*>& aStructures = {})
+      const std::vector<std::shared_ptr<AlignableStructure>>& aStructures = {})
       : fitOptions(fOptions),
         alignedTransformUpdater(aTransformUpdater),
         alignedDetElements(aDetElements),
@@ -82,7 +83,7 @@ struct AlignmentOptions {
   std::vector<Acts::SurfacePlacementBase*> alignedDetElements;
 
   // The structures to be aligned
-  std::vector<AlignableStructure*> alignedStructures;
+  std::vector<std::shared_ptr<AlignableStructure>> alignedStructures;
 
   // The alignment tolerance to determine if the alignment is covered
   double averageChi2ONdfCutOff = 0.5;
