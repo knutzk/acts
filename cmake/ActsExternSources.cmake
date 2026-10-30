@@ -19,15 +19,8 @@ set(ACTS_COVFIE_SOURCE
 )
 mark_as_advanced(ACTS_COVFIE_SOURCE)
 
-set(ACTS_DETRAY_SOURCE
-    "URL;https://github.com/acts-project/detray/archive/refs/tags/v${_acts_detray_version}.tar.gz;URL_HASH;SHA256=6ba1b5ab140a81d2eb825658703bda992715f52e3a202995660a984fc68ac507"
-    CACHE STRING
-    "Source to take DETRAY from"
-)
-mark_as_advanced(ACTS_DETRAY_SOURCE)
-
 set(ACTS_TRACCC_SOURCE
-    "URL;https://github.com/acts-project/traccc/archive/refs/tags/v${_acts_traccc_version}.tar.gz;URL_HASH;SHA256=de4c88028f51deb63d75c5bdcde40803832e372219cd59d195a748560dacdeb1"
+    "URL;https://github.com/acts-project/traccc/archive/refs/tags/v${_acts_traccc_version}.tar.gz;URL_HASH;SHA256=6416ed79c38201397a294a23b43dfbb255bd20603faf652707c67e5022f98af8"
     CACHE STRING
     "Source to take TRACCC from"
 )
@@ -45,6 +38,7 @@ set(ACTS_NLOHMANNJSON_SOURCE
     CACHE STRING
     "Source to take nlohmann_json from"
 )
+mark_as_advanced(ACTS_NLOHMANN_JSON_SOURCE)
 
 # translate version string to the historical Mille release naming convention
 string(REPLACE "." "-" _acts_mille_release_string ${_acts_mille_version})
@@ -53,7 +47,16 @@ set(ACTS_MILLE_SOURCE
     CACHE STRING
     "Source to take Mille from"
 )
-mark_as_advanced(ACTS_NLOHMANN_JSON_SOURCE)
+mark_as_advanced(ACTS_MILLE_SOURCE)
+
+# translate version string to the historical GBL release naming convention
+string(REPLACE "." "-" _acts_gbl_release_string ${_acts_gbl_version})
+set(ACTS_GBL_SOURCE
+    "URL;https://gitlab.desy.de/millepede/general-broken-lines/-/archive/V${_acts_gbl_release_string}/general-broken-lines-V${_acts_gbl_release_string}.tar.gz;URL_HASH;SHA256=e40401a77a828c81a9217d8df3201e7712ac86b4fd5058d526ae1e1f6664304f"
+    CACHE STRING
+    "Source to take General Broken Lines (GBL) from"
+)
+mark_as_advanced(ACTS_GBL_SOURCE)
 
 set(ACTS_EIGEN3_SOURCE
     "URL;https://gitlab.com/libeigen/eigen/-/archive/${_acts_eigen3_version}/${_acts_eigen3_version}.tar.gz;URL_HASH;SHA256=ba6ef66ba2d319e0a871a267889411c550d4bdf5bc7c62f86c60276913f3f4ba"
@@ -77,7 +80,7 @@ set(ACTS_ANNOY_SOURCE
 mark_as_advanced(ACTS_ANNOY_SOURCE)
 
 set(ACTS_ODD_SOURCE
-    "GIT_REPOSITORY;https://gitlab.cern.ch/acts/OpenDataDetector.git;GIT_TAG;v4.0.4"
+    "GIT_REPOSITORY;https://github.com/OpenDataDetector/OpenDataDetector.git;GIT_TAG;v4.0.4"
     CACHE STRING
     "Source to take OpenDataDetector from"
 )
